@@ -1,0 +1,14 @@
+<template name="ApplicationLayout">
+  <div class="main-content">
+    {{> yield }}
+  </div>
+  <div class="sidebar">
+    <div class="logo">
+      <img alt="Juy.fm" />
+    </div>
+
+    <div class="list">
+      {{> yield "sidebarList" }}
+    </div>
+  </div>
+</template>
