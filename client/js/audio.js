@@ -1,6 +1,6 @@
 define('audio', [], function() {
   var audio = document.createElement('audio');
-  audio.id = 'player';
+  audio.className = 'main';
 
   return audio;
 });
