@@ -3,5 +3,9 @@
 </template>
 
 <template name="PalbumSidebarList">
-  <div>Palbum Sidebar List Placeholder</div>
+  <ul class="tabs">
+    {{#each tabs}}
+      <li class="tab" data-type="{{type}}">{{title}}</li>
+    {{/each}}
+  </ul>
 </template>
