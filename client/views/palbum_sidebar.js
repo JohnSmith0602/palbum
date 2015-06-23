@@ -4,7 +4,9 @@ define('palbum_sidebar', ['data'], function(data) {
       console.log('back');
     },
     guide: function() {
-      console.log('guide');
+      var $modal = $('.main-content .modal');
+      UI.render(Template.PalbumGuide, $modal.get(0));
+      $modal.show();
     },
     settings: function() {
       console.log('settings');
