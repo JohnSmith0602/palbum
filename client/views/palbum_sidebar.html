@@ -9,3 +9,27 @@
 <template name="PalbumGuide">
   <h1>使用指南</h1>
 </template>
+
+<template name="PalbumSettings">
+  <form class="ui form">
+    {{#each sections}}
+      <section>
+        <h4 class="ui dividing header">{{title}}</h4>
+        <div class="inline fields">
+          {{#each options}}
+            <div class="field">
+              <div class="ui radio checkbox">
+                {{#if $eq value ../currentValue }}
+                  <input type="radio" name="{{../name}}" value="{{value}}" checked >
+                {{else}}
+                  <input type="radio" name="{{../name}}" value="{{value}}">
+                {{/if}}
+                <label>{{title}}</label>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </section>
+    {{/each}}
+  </form>
+</template>

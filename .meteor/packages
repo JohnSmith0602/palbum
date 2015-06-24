@@ -10,3 +10,6 @@ insecure
 iron:router
 classcraft:stylus-autoprefixer
 mrt:define
+semantic:ui-form
+underscore
+raix:handlebar-helpers
