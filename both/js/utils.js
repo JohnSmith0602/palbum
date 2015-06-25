@@ -2,8 +2,9 @@ define('utils', [], function() {
   var utils = {};
   utils.showModal = function(callbackFn) {
     var $modal = $('.main-content .modal');
-    $modal.empty();
-    callbackFn($modal);
+    var $modalContent = $modal.find('.modal-content');
+    $modalContent.empty();
+    callbackFn($modalContent);
     $modal.show();
   };
 

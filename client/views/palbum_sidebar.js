@@ -4,18 +4,20 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
       console.log('back');
     },
     guide: function() {
-      utils.showModal(function($modal) {
-        UI.render(Template.PalbumGuide, $modal.get(0));
+      utils.showModal(function($modalContent) {
+        UI.render(Template.PalbumGuide, $modalContent.get(0));
       });
     },
     settings: function() {
-      utils.showModal(function($modal) {
+      utils.showModal(function($modalContent) {
         var palbumSettingsData = utils.getCurrentPalbumSettings(data.palbumSettings);
-        UI.renderWithData(Template.PalbumSettings, palbumSettingsData, $modal.get(0));
+        UI.renderWithData(Template.PalbumSettings, palbumSettingsData, $modalContent.get(0));
       });
     },
     feedback: function() {
-      console.log('feedback');
+      utils.showModal(function($modalContent) {
+        UI.render(Template.PalbumFeedback, $modalContent.get(0));
+      });
     }
   };
 
@@ -40,4 +42,30 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
       localStorage.setItem($el.attr('name'), $el.attr('value'));
     }
   });
+
+  Template.PalbumFeedback.events({
+    'click .submit': function(e) {
+      var $form = $('.modal form');
+      var data = $form.serializeJSON();
+
+      Feedbacks.insert(data, function(error) {
+        if (error) {
+          submitFeedbackFailureHandler();
+        } else {
+          submitFeedbackSuccessHandler();
+        }
+      });
+
+
+    }
+  });
+
+  function submitFeedbackSuccessHandler() {
+    utils.showModal(function($modalContent) {
+      UI.render(Template.SubmitFeedbackSuccess, $modalContent.get(0));
+    });
+  }
+  function submitFeedbackFailureHandler() {
+    $('.modal .modal-content .form').addClass('error');
+  }
 });

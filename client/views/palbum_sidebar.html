@@ -33,3 +33,24 @@
     {{/each}}
   </form>
 </template>
+
+<template name="PalbumFeedback">
+  <form class="ui form">
+    <div class="ui error message">
+      <p>发送失败，请稍后重试。</p>
+    </div>
+    <div class="field">
+      <label>邮箱</label>
+      <input type="email" name="email">
+    </div>
+    <div class="field">
+      <label>留言</label>
+      <textarea name="feedback" placeholder="使用 Juy.fm 的感受、建议或意见，或者任何你想说的话"></textarea>
+    </div>
+    <div class="ui submit button primary">提交</div>
+  </form>
+</template>
+
+<template name="SubmitFeedbackSuccess">
+  <p>留言已收到，谢谢你对 Juy 的关注和支持 o.O</p>
+</template>

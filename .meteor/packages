@@ -6,10 +6,14 @@
 
 meteor-platform
 autopublish
-insecure
 iron:router
 classcraft:stylus-autoprefixer
 mrt:define
 semantic:ui-form
 underscore
 raix:handlebar-helpers
+semantic:ui-button
+semantic:ui-icon
+pcel:serialize
+semantic:ui-message
+matb33:collection-hooks
