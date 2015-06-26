@@ -48,15 +48,10 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
       var $form = $('.modal form');
       var data = $form.serializeJSON();
 
-      Feedbacks.insert(data, function(error) {
-        if (error) {
-          submitFeedbackFailureHandler();
-        } else {
-          submitFeedbackSuccessHandler();
-        }
-      });
+      Meteor.call('sendFeedback', data);
 
-
+      // 因為 feedback 信息是否成功提交對使用者來說並不是很要緊的事情，統一告知「收到反饋」
+      submitFeedbackSuccessHandler();
     }
   });
 
@@ -65,7 +60,7 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
       UI.render(Template.SubmitFeedbackSuccess, $modalContent.get(0));
     });
   }
-  function submitFeedbackFailureHandler() {
-    $('.modal .modal-content .form').addClass('error');
-  }
+  //function submitFeedbackFailureHandler() {
+  //  $('.modal .modal-content .form').addClass('error');
+  //}
 });
