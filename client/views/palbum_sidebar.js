@@ -5,7 +5,7 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
     },
     guide: function() {
       utils.showModal(function($modalContent) {
-        UI.render(Template.PalbumGuide, $modalContent.get(0));
+        UI.renderWithData(Template.PalbumGuide, data.palbumGuide, $modalContent.get(0));
       });
     },
     settings: function() {

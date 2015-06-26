@@ -7,11 +7,29 @@
 </template>
 
 <template name="PalbumGuide">
-  <h1>使用指南</h1>
+  <div class="ui guide">
+    {{#each sections}}
+      <section>
+        <h4 class="ui dividing header">{{title}}</h4>
+        <p>{{content}}</p>
+      </section>
+    {{/each}}
+    <section class="cheatsheet">
+      <h4 class="ui dividing header">快捷键</h4>
+      <div class="items">
+        {{#each cheatsheet}}
+          <div class="item">
+            <span class="key">{{key}}</span>
+            <span class="action">{{action}}</span>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  </div>
 </template>
 
 <template name="PalbumSettings">
-  <form class="ui form">
+  <div class="ui form settings">
     {{#each sections}}
       <section>
         <h4 class="ui dividing header">{{title}}</h4>
@@ -31,11 +49,11 @@
         </div>
       </section>
     {{/each}}
-  </form>
+  </div>
 </template>
 
 <template name="PalbumFeedback">
-  <form class="ui form">
+  <form class="ui form feedback">
     {{!--<div class="ui error message"> --}}
     {{!--  <p>发送失败，请稍后重试。</p> --}}
     {{!--</div> --}}

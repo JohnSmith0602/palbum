@@ -8,7 +8,7 @@ define('data', [], function() {
     },
     {
       type: 'guide',
-      title: '使用指南'
+      title: '新手指南'
     },
     {
       type: 'settings',
@@ -19,6 +19,45 @@ define('data', [], function() {
       title: '我有话要说'
     }
   ];
+
+  data.palbumGuide = {
+    sections: [
+      {
+        title: '这是什么？',
+        content: 'Juy.fm 目前可以简单地理解成是一个优质乐辑（歌单）的聚合站点，提供精致、纯粹、沉浸的听歌体验。'
+      },
+      {
+        title: '如何操作？',
+        content: '戴上耳机，或者打开音响，听就好了：）每个乐辑以歌词本的形式呈现，封底提供所有歌曲的索引。把鼠标移至页面的最左/右端，页面有抬起效果，点击即可翻页。也可使用快捷键进行翻页。'
+      }
+    ],
+    cheatsheet: [
+      {
+        key: '（方向键）左',
+        action: '上一页'
+      },
+      {
+        key: '（方向键）右',
+        action: '下一页'
+      },
+      {
+        key: '（方向键）上',
+        action: '上一章'
+      },
+      {
+        key: '（方向键）下',
+        action: '下一章'
+      },
+      {
+        key: 's/S',
+        action: '切换播放状态'
+      },
+      {
+        key: 'm/M',
+        action: '切换播放模式'
+      }
+    ]
+  };
 
   data.palbumSettings = {
     sections: [
