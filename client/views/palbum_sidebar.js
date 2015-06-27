@@ -1,7 +1,13 @@
 define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
   var palbumSidebarFunctions = {
     back: function() {
-      console.log('back');
+      var $sidebar = $('body .sidebar');
+      var width = $sidebar.css('width');
+      $sidebar.animate({
+        left: '-=' + width
+      }, 600, 'swing', function() {
+        window.location.href = '/';
+      });
     },
     guide: function() {
       utils.showModal(function($modalContent) {
@@ -16,7 +22,7 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
     },
     feedback: function() {
       utils.showModal(function($modalContent) {
-        UI.render(Template.PalbumFeedback, $modalContent.get(0));
+        UI.renderWithData(Template.PalbumFeedback, { email: localStorage.userEmail }, $modalContent.get(0));
       });
     }
   };
@@ -47,6 +53,9 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
     'click .submit': function(e) {
       var $form = $('.modal form');
       var data = $form.serializeJSON();
+
+      // 把使用者的郵箱存入 localStorage
+      localStorage.userEmail = data.email;
 
       Meteor.call('sendFeedback', data);
 

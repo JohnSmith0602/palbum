@@ -38,7 +38,7 @@
             <div class="field">
               <div class="ui radio checkbox">
                 {{#if $eq value ../currentValue }}
-                  <input type="radio" name="{{../name}}" value="{{value}}" checked >
+                  <input type="radio" name="{{../name}}" value="{{value}}" checked>
                 {{else}}
                   <input type="radio" name="{{../name}}" value="{{value}}">
                 {{/if}}
@@ -59,7 +59,11 @@
     {{!--</div> --}}
     <div class="field">
       <label>邮箱</label>
-      <input type="email" name="email">
+      {{#if email}}
+        <input type="email" name="email" value="{{email}}">
+      {{else}}
+        <input type="email" name="email">
+      {{/if}}
     </div>
     <div class="field">
       <label>留言</label>
