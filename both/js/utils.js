@@ -7,6 +7,12 @@ define('utils', [], function() {
     callbackFn($modalContent);
     $modal.show();
   };
+  utils.hideModal = function() {
+    var $modal = $('.main-content .modal');
+    var $modalContent = $modal.find('.modal-content');
+    $modal.hide();
+    $modalContent.empty();
+  };
 
   utils.getCurrentPalbumSettings = function(settings) {
     var result = settings;
