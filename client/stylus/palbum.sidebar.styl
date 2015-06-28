@@ -1,0 +1,42 @@
+body.palbum .sidebar
+  .logo
+    width: $palbumSidebarWidth
+    height: $palbumSidebarWidth * (5 / 8)
+    background: url("/logos/title.svg") 0 0 no-repeat
+    background-size: 100%
+
+    &:hover
+      background: url("/logos/title_hover.svg") 0 0 no-repeat
+      background-size: 100%
+
+    a
+      display: inline-block
+      width: 100%
+      height: 100%
+      color: transparent
+
+  ul.tabs
+    position: absolute
+    list-style: none
+    margin: 0
+    padding: 0
+    width: 100%
+    left: 0
+    top: 50%
+
+    li
+      text-align: center
+      margin: 0
+      line-height: $palbumSidebarTabHeight
+      height: $palbumSidebarTabHeight
+
+      color: $baseGrayLight
+
+      &:hover
+        cursor: pointer
+        text-decoration: underline
+
+      &.selected
+        cursor: default
+        text-decoration: none
+        color: $baseGreen

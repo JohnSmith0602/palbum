@@ -42,6 +42,12 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
     }
   });
 
+  Template.PalbumSidebarList.onRendered(function() {
+    var $ul = $('body.palbum .sidebar ul');
+    var height = $ul.height();
+    $ul.css('marginTop', -height / 2);
+  });
+
   Template.PalbumSettings.events({
     'click input[type="radio"]': function(e) {
       var $el = $(e.currentTarget);
