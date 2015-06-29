@@ -24,7 +24,7 @@ define('data', [], function() {
     sections: [
       {
         title: '这是什么？',
-        content: 'Juy.fm 目前可以简单地理解成是一个优质乐辑（歌单）的聚合站点，提供精致、纯粹、沉浸的听歌体验。'
+        content: 'Juy.fm 目前是一个优质乐辑（歌单）的聚合站点，提供精致、纯粹、沉浸的听歌体验。'
       },
       {
         title: '如何操作？',
@@ -71,8 +71,8 @@ define('data', [], function() {
         currentValue: 'none',
         options: [
           {
-            title: '随乐辑内容变化',
-            value: 'none',
+            title: '默认',
+            value: 'default',
             default: true
           },
           {
@@ -99,8 +99,8 @@ define('data', [], function() {
         currentValue: 'none',
         options: [
           {
-            title: '无',
-            value: 'none',
+            title: '默认',
+            value: 'default',
             default: true
           },
           {

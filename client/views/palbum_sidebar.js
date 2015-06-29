@@ -1,13 +1,14 @@
 define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
   var palbumSidebarFunctions = {
     back: function() {
-      var $sidebar = $('body .sidebar');
-      var width = $sidebar.css('width');
-      $sidebar.animate({
-        left: '-=' + width
-      }, 600, 'swing', function() {
-        window.location.href = '/';
-      });
+      //var $sidebar = $('body .sidebar');
+      //var width = $sidebar.css('width');
+      //$sidebar.animate({
+      //  left: '-=' + width
+      //}, 600, 'swing', function() {
+      //  window.location.href = '/';
+      //});
+      window.location.href = '/';
     },
     guide: function() {
       utils.showModal(function($modalContent) {
@@ -36,9 +37,14 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
   Template.PalbumSidebarList.events({
     'click li.tab': function(e) {
       var $el = $(e.currentTarget);
-      $el.addClass('selected').siblings().removeClass('selected');
+      if ($el.hasClass('selected')) {
+        $el.removeClass('selected');
+        utils.hideModal();
+      } else {
+        $el.addClass('selected').siblings().removeClass('selected');
 
-      palbumSidebarFunctions[$el.data('type')]();
+        palbumSidebarFunctions[$el.data('type')]();
+      }
     }
   });
 
