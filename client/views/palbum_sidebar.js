@@ -84,4 +84,14 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
   //function submitFeedbackFailureHandler() {
   //  $('.modal .modal-content .form').addClass('error');
   //}
+
+  //Template.SubmitFeedbackSuccess.onRendered(function() {
+  //  setTimeout(function() {
+  //    $('.modal').animate({
+  //      opacity: 0
+  //    }, 1000, 'swing', function() {
+  //      utils.hideModal();
+  //    });
+  //  }, 1000);
+  //});
 });

@@ -12,6 +12,9 @@ define('utils', [], function() {
     var $modalContent = $modal.find('.modal-content');
     $modal.hide();
     $modalContent.empty();
+
+    var $tabs = $('body>.sidebar .tab');
+    $tabs.removeClass('selected');
   };
 
   utils.getCurrentPalbumSettings = function(settings) {

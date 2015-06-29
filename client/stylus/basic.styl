@@ -11,3 +11,24 @@ body
   background-color: $baseWhite
   font-size: $baseFontSize
   font-family: $baseFontFamily
+
+.ui.primary.button
+  background-color: $baseGreen
+  &:hover
+    background-color: lighten($baseGreen, $lightenPercent)
+
+.ui.form input
+  border-radius: 0px !important
+  color: $baseGray !important
+  &:focus
+    border-color: $baseGreen !important
+    box-shadow: 1px 0 0 0 $baseGreen inset !important
+
+.ui.form textarea
+  border-radius: 0px
+  color: $baseGray
+
+  &:focus
+    border-radius: 0px
+    border-color: $baseGreen
+    box-shadow: 1px 0 0 0 $baseGreen inset
