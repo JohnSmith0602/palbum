@@ -1,0 +1,13 @@
+$themeBlue = #214d6d
+
+.theme-blue
+  .page
+    background-color: $themeBlue
+    color: $baseWhite
+
+    &.odd
+      background-image: 'linear-gradient(to left, %s 97%, %s 100%);' % ($themeBlue #39688a)
+      &.p1
+        background-image: 'linear-gradient(to left, %s 99%, %s 100%);' % ($themeBlue #39688a)
+    &.even
+      background-image: 'linear-gradient(to right, %s 99%, %s 100%);' % ($themeBlue #39688a)

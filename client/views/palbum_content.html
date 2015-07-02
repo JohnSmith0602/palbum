@@ -1,3 +1,59 @@
 <template name="PalbumContent">
-  <div>Palbum Content Placeholder</div>
+  <div class="palbum-wrapper theme-{{type}} theme-{{color}} ">
+    <div class="hard">
+      <div class="wrapper">
+        {{{palbumCoverDiv id}}}
+        <div class="waist">
+          <h1 class="title">{{title}}</h1>
+          <span class="author">
+            By
+            <a href="{{authorLink}}" target="_blank">{{author}}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="hard">
+      {{{palbumCoverDiv id}}}
+    </div>
+    <div class="hard intro">
+      <div class="wrapper">
+        <h1 class="title">{{title}}</h1>
+        <div class="text">
+          {{#each addIndex intros}}
+            {{#if isFirst}}
+              <p class="first">{{value}}</p>
+            {{else}}
+              {{#if isLast}}
+                <p class="last">{{value}}</p>
+              {{else}}
+                <p>{{value}}</p>
+              {{/if}}
+            {{/if}}
+          {{/each}}
+          <span class="author">{{author}}</span>
+          <span class="date">{{date}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hard p{{getBackCoverIndex songs.length}}">
+      <div class="back-cover">
+        <ol class="index">
+          {{#each addIndex songs}}
+            <li>
+              <a href="#" data-index="{{index}}">{{value.song.name}}</a>
+            </li>
+          {{/each}}
+        </ol>
+        <div class="controls">
+          <a href="#" class="replay">
+            <span>再欣赏一遍</span>
+          </a>
+          <a href="#" class="exit">
+            <span>返回乐辑列表</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

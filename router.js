@@ -24,6 +24,12 @@ Router.route('/palbum/:palbumId', {
   yieldRegions: {
     'PalbumSidebarList': { to: 'sidebarList'}
   },
+  waitOn: function() {
+    return Meteor.subscribe('palbums');
+  },
+  data: function() {
+    return Palbums.findOne({ id: this.params.palbumId });
+  },
   action: function() {
     $('body').addClass('palbum');
 

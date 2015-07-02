@@ -31,5 +31,11 @@ define('utils', [], function() {
     return settings;
   };
 
+  utils.getPalbumPageNumber = function(songNumber) {
+    var palbumPageNumber = songNumber * 2 + 1 + 2 + 1;
+
+    return palbumPageNumber;
+  };
+
   return utils;
 });
