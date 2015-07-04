@@ -57,3 +57,47 @@
     </div>
   </div>
 </template>
+
+<template name="PalbumPageImage">
+  <div class="wrapper">
+    <div class="cover">
+      <a target="_blank" href="{{song.album.link}}">
+        <img src="/images/palbums/{{palbumId}}/{{songIndex}}.jpg" alt="{{song.album.name}}" title="{{song.album.name}}" />
+      </a>
+    </div>
+
+    <div class="player-controls">
+      <div class="main">
+        <span class="icon play"></span>
+      </div>
+      <div class="mode">
+        <span class="icon normal"></span>
+      </div>
+      <div class="volume">
+        <span class="icon min"></span>
+        <input id="slider" />
+        <span class="icon max"></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="PalbumPageText">
+  <div class="wrapper">
+    <div class="header">
+      <h2 class="song-name">{{song.name}}</h2>
+      <span class="artist-name">{{song.artist.name}}</span>
+      <span class="album-name">{{song.album.name}}</span>
+    </div>
+    <div class="main-body">
+      {{#each paragraphs}}
+        <p>{{this}}</p>
+      {{/each}}
+
+      <a target="_blank" class="search-more">了解更多...</a>
+    </div>
+    <div class="footer">
+      <span class="page-number">{{pageNumberInBook}}</span>
+    </div>
+  </div>
+</template>

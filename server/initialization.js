@@ -38,7 +38,7 @@ if (Palbums.find().count() === 0) {
           '（外祖母）Lucy 也爱唱歌，唱的大多是流行歌曲，比如老牌女歌手 Gracie Fields 的热门金曲 <Now Is the Hour>，爱尔兰男高音歌手 Josef Locke 的 <I Walk Beside You>，<Bless This House> 等等。',
           'Josef Locke 的歌在我家非常受欢迎，他也是第一个用嗓音征服了我的歌手。'
         ],
-        pageNumber: 20,
+        pageNumberInBook: 20,
         fontSize: 1.3
       },
       {
@@ -56,7 +56,7 @@ if (Palbums.find().count() === 0) {
           '有意思的是，他会把 <The Runaway Train>，<The Big Rock Candy Mountain> 这些大人听的民谣歌曲，混杂在 <Teddy Bears\' Picnic>，<Nellie the Elephant> 这些儿歌里放给我们听。',
           '麦克叔叔偶尔还会放 Chuck Berry 演唱的 <Memphis Tennessee>，这种歌曲对那时的我来说不啻为一声炸雷。'
         ],
-        pageNumber: 24,
+        pageNumberInBook: 24,
         fontSize: 1.2
       }
     ]

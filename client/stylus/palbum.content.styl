@@ -1,5 +1,8 @@
 @import 'turnjs'
 
+@import 'palbum.page.main'
+@import 'palbum.page.cover'
+
 .palbum-wrapper
   // 首頁封面
   .page.p1
@@ -165,114 +168,3 @@
         display: block
         text-align: right
         margin: 0 15px 15px 0
-
-
-.palbum-wrapper
-  /*
-   * 內容頁
-   */
-  .page.content
-    position: relative
-
-    .wrapper
-      overflow: hidden
-      margin: $baseMargin
-      width: $pageWidth - $baseMargin * 2
-      height: $pageHeight - $baseMargin * 2
-
-    // 圖片頁
-    // 播放器樣式單獨放在 player.styl 中
-    &.image
-      .wrapper
-        position: relative
-
-      .cover
-        position: relative
-        margin: 50px auto 20px auto
-        width: 300px
-        height: 300px
-
-        a,img
-          display: inline-block
-          width: 100%
-          height: 100%
-          border-radius: 100%
-
-        .loading
-          position: absolute
-          display: inline-block
-          left: 0
-          top: 0
-          width: 100%
-          height: 100%
-          border-radius: 100%
-
-          background: url('/icons/loading_circle.gif') 0 0 no-repeat
-          background-size: 100%
-          background-color: rgba(0, 0, 0, .7)
-
-
-    // 文本頁
-    &.text
-      .header
-        margin: 0 0 20px 0
-        .song-name
-          margin: 0
-          color: $baseGreen
-          font-size: 22px
-          line-height: 40px
-          height: 40px
-
-        .artist-name
-          display: inline-block
-          font-style: italic
-          line-height: 20px
-          height: 20px
-
-        .album-name
-          display: none
-
-      .main-body
-        overflow: auto
-        margin-bottom: 15px
-        height: $pageHeight - $baseMargin * 2 - 40px - 20px - 20px - 15px
-        font-size: 18px
-        font-family: $contentFontFamily;
-        line-height: 1.4em
-
-        p
-          margin: 20px 0
-
-          &:first-child
-            margin-top: 0
-
-          &:last-child
-            margin-bottom: 0
-
-        a.search-more
-          display: inline-block
-          margin: 30px 0 20px 0
-          font-size: 16px
-          font-family: $baseFontFamily
-          color: $lightGray
-          text-decoration: none
-
-          &:hover
-            color: $baseGreen
-            text-decoration: underline
-
-      .footer
-        position: absolute
-        right: 0px
-        bottom: 0px
-
-        .page-number
-          display: inline-block
-          width: $baseMargin
-          height: $baseMargin + 15px
-          line-height: $baseMargin + 15px
-
-          font-size: 20px
-          font-family: cursive
-          font-style: italic
-          opacity: 0.8

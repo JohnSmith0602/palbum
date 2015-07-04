@@ -66,13 +66,14 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
      ** turnjs 相關
      */
     $palbum.turn({
-      pages: palbumPageNumber
-      //when: {
-      //  missing: function(e, pages) {
-      //    for (var i = 0; i < pages.length; i++) {
-      //      addPage(pages[i], $(this), data);
-      //    }
-      //  },
+      pages: palbumPageNumber,
+      when: {
+        missing: function(e, pages) {
+          // this 指向的是 $palbum 對應的 DOM 節點
+          for (var i = 0; i < pages.length; i++) {
+            addPage(pages[i], $(this), data);
+          }
+        },
       //  turned: function(e, page) {
       //    current_audio_src = getAudioSrcByPage(page, data);
       //    cache_audio_src = getAudioSrcByPage(page + 2, data);
@@ -121,7 +122,55 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
       //      }
       //    }
       //  }
-      //}
+      }
     });
   });
+
+  function addPage(page, $palbum, data) {
+    var $element = getElementByPage(page, data);
+
+    $palbum.turn('addPage', $element, page);
+  }
+
+  function getElementByPage(page, data) {
+    if (page % 2) {
+      // 文字
+      var index = (page - 5) / 2;
+      if (data.songs.length > index) {
+        var current_data = data.songs[index];
+        var $element = $('<div class="hard content text"></div>');
+        UI.renderWithData(Template.PalbumPageText, current_data, $element[0]);
+
+        // js 動態設置頁面的文字尺寸
+        if (current_data.fontSize) {
+          $element.find('.main-body p').css('fontSize', current_data.fontSize + 'em');
+        }
+
+        // 設置搜索鏈接的 href
+        var $link = $element.find('a.search-more');
+        var href = 'https://www.baidu.com/s?rn=20&wd=' + encodeURIComponent(current_data.song.artist.name) + '%20';
+        if (current_data.searchType === 'album') {
+          href += encodeURIComponent(current_data.song.album.name);
+        } else {
+          href += encodeURIComponent(current_data.song.name);
+        }
+        $link.attr('href', href);
+      }
+    } else {
+      // 封面、播放器
+      var index = (page - 4) / 2;
+      if (data.songs.length > index) {
+        var current_data = data.songs[index];
+        current_data.palbumId = data.id;
+        current_data.songIndex = index + 1;
+
+        var $element = $('<div class="hard content image"></div>');
+        UI.renderWithData(Template.PalbumPageImage, current_data, $element[0]);
+
+        //initializePlayerControls($element);
+      }
+    }
+
+    return $element;
+  }
 });
