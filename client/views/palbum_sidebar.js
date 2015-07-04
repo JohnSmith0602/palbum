@@ -54,6 +54,8 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
     $ul.css('marginTop', -height / 2);
   });
 
+  // TODO：radio 選擇框目前樣式有瑕疵，選中時有一條莫名其妙的左邊線。
+  // TODO：現在的設置值無法做到即時更新效果，需要刷新。例如搜索設置修改後，當前頁面的「瞭解更多」鏈接並不會變。
   Template.PalbumSettings.events({
     'click input[type="radio"]': function(e) {
       var $el = $(e.currentTarget);

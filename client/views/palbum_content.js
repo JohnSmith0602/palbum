@@ -148,12 +148,8 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
 
         // 設置搜索鏈接的 href
         var $link = $element.find('a.search-more');
-        var href = 'https://www.baidu.com/s?rn=20&wd=' + encodeURIComponent(current_data.song.artist.name) + '%20';
-        if (current_data.searchType === 'album') {
-          href += encodeURIComponent(current_data.song.album.name);
-        } else {
-          href += encodeURIComponent(current_data.song.name);
-        }
+        var href = utils.getSearchMoreHref(current_data.searchType, localStorage.getItem('searchPreference'),
+          current_data.song.artist.name, current_data.song.album.name, current_data.song.name);
         $link.attr('href', href);
       }
     } else {

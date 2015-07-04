@@ -67,8 +67,8 @@ define('data', [], function() {
     sections: [
       {
         title: '主题色',
-        name: 'theme',
-        currentValue: 'none',
+        name: 'themeColor',
+        currentValue: 'default',
         options: [
           {
             title: '默认',
@@ -95,8 +95,8 @@ define('data', [], function() {
       },
       {
         title: '偏好内容',
-        name: 'preference',
-        currentValue: 'none',
+        name: 'searchPreference',
+        currentValue: 'default',
         options: [
           {
             title: '默认',
