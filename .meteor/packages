@@ -12,7 +12,7 @@ semantic:ui-form
 underscore
 raix:handlebar-helpers
 semantic:ui-button
-semantic:ui-icon
 pcel:serialize
 semantic:ui-message
 matb33:collection-hooks
+kidovate:bootstrap-slider

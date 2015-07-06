@@ -7,26 +7,24 @@ body.palbum .modal
   top: 0
   background-color: $baseWhite
 
-  .close
+  .icon.close
     position: absolute
+    transition: all .2s ease-in-out
     right: 0
     top: 0
     padding: 0 30px
     line-height: $palbumLogoHeight
     height: $palbumLogoHeight
+    color: $baseGrayLight
+    font-size: 24px
 
-    i.remove
-      margin: 0
-      transition: all .2s ease-in-out
-      color: $baseGrayLight
-      font-size: 2em
+    &:before
+      content: "\ea0f"
 
     &:hover
       cursor: pointer
-
-      i
-        transform: scale(1.5)
-        color: $baseGray
+      transform: scale(1.5)
+      color: $baseGray
 
   .modal-content
     margin: $palbumLogoHeight auto $baseMargin auto

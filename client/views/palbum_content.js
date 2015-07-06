@@ -53,14 +53,32 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
 
     var audioPlayer = new AudioPlayer();
 
+
+    // pAlbum 設置初始化
+    utils.palbumInitialization();
+
     // 添加 audio 對象到 DOM 結構中
     $('body audio.main').remove();
     $('body').append(audio);
 
-
     var data = this.data;
     var $palbum = $('.palbum-wrapper');
     var palbumPageNumber = utils.getPalbumPageNumber(data.songs.length);
+
+
+    // 順序/單曲循環
+    $palbum.on('click', '.player-controls .mode span.icon', function (e) {
+      var $element = $(e.currentTarget);
+      var $icons = $('.palbum-wrapper .player-controls .mode .icon');
+      if ($element.hasClass('normal')) {
+        localStorage.playMode = 'repeat';
+        $icons.removeClass('normal').addClass('repeat');
+      } else if ($element.hasClass('repeat')) {
+        localStorage.playMode = 'normal';
+        $icons.removeClass('repeat').addClass('normal');
+      }
+    });
+
 
     /*
      ** turnjs 相關
@@ -74,54 +92,54 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
             addPage(pages[i], $(this), data);
           }
         },
-      //  turned: function(e, page) {
-      //    current_audio_src = getAudioSrcByPage(page, data);
-      //    cache_audio_src = getAudioSrcByPage(page + 2, data);
-      //
-      //    // current_audio_src 存在的時候，播放器 UI 才存在
-      //    // 但是一開始就做好 volumeSlider 的初始化對體驗更重要
-      //    // 目前無法獲得翻動到的頁面的 DOM，只好對當前的所有的 controls 進行操作。
-      //    // 播放/暫停
-      //    var $playerControlsMain = $('.palbum-wrapper .page-wrapper .player-controls .main');
-      //    $playerControlsMain.find('.icon').removeClass('play').addClass('pause');
-      //    // 播放模式
-      //    var $playerControlsMode = $('.palbum-wrapper .page-wrapper .player-controls .mode');
-      //    if (localStorage.playMode === 'normal') {
-      //      $playerControlsMode.find('.icon').removeClass('repeat').addClass('normal');
-      //    } else {
-      //      $playerControlsMode.find('.icon').removeClass('normal').addClass('repeat');
-      //    }
-      //    // 音量條
-      //    $('.palbum-wrapper .page-wrapper .player-controls .volume').each(function() {
-      //      var $element = $(this);
-      //      $element.html('<span class="icon min"></span><input id="slider" /><span class="icon max">');
-      //      initSlider($element.find('input'));
-      //    });
-      //
-      //
-      //    // 翻頁之後首先給歌曲封面加上 loading 的動畫（如果播放器的狀態還不能播放下一幀的話）
-      //    if ($player.get(0).readyState < 3) {
-      //      var $contentCovers = $('.palbum-wrapper .page.content .cover');
-      //      $contentCovers.each(function() {
-      //        var $element = $(this);
-      //        if (!$element.find('span.loading').length) {
-      //          $element.append('<span class="loading"></span>');
-      //        }
-      //      });
-      //    }
-      //
-      //
-      //    if (current_audio_src) {
-      //      if (current_audio_src === $player.attr('src')) {
-      //        // 同一首歌，繼續播放
-      //        $player.trigger('play');
-      //      } else {
-      //        $player.attr('src', current_audio_src);
-      //        $cachePlayer.attr('src', cache_audio_src);
-      //        $player.trigger('play');
-      //      }
-      //    }
-      //  }
+        turned: function(e, page) {
+          var current_audio_src = utils.getAudioSrcByPageNumber(page, data);
+          //cache_audio_src = getAudioSrcByPage(page + 2, data);
+
+          // current_audio_src 存在的時候，播放器 UI 才存在
+          // 但是一開始就做好 volumeSlider 的初始化對體驗更重要
+          // 目前無法獲得翻動到的頁面的 DOM，只好對當前的所有的 controls 進行操作。
+          // 播放/暫停
+          var $playerControlsMain = $('.palbum-wrapper .page-wrapper .player-controls .main');
+          $playerControlsMain.find('.icon').removeClass('play').addClass('pause');
+          // 播放模式
+          var $playerControlsMode = $('.palbum-wrapper .page-wrapper .player-controls .mode');
+          if (localStorage.playMode === 'normal') {
+            $playerControlsMode.find('.icon').removeClass('repeat').addClass('normal');
+          } else {
+            $playerControlsMode.find('.icon').removeClass('normal').addClass('repeat');
+          }
+          // 音量條
+          $('.palbum-wrapper .page-wrapper .player-controls .volume').each(function() {
+            var $element = $(this);
+            $element.html('<span class="icon min"></span><input id="slider" /><span class="icon max">');
+            initSlider($element.find('input'));
+          });
+
+
+          // 翻頁之後首先給歌曲封面加上 loading 的動畫（如果播放器的狀態還不能播放下一幀的話）
+          //if ($player.get(0).readyState < 3) {
+          //  var $contentCovers = $('.palbum-wrapper .page.content .cover');
+          //  $contentCovers.each(function() {
+          //    var $element = $(this);
+          //    if (!$element.find('span.loading').length) {
+          //      $element.append('<span class="loading"></span>');
+          //    }
+          //  });
+          //}
+
+          if (current_audio_src) {
+            if (audio.src.indexOf(current_audio_src) &&
+              (audio.src.indexOf(current_audio_src) + current_audio_src.length === audio.src.length)) {
+              // 同一首歌，不改變 audio src
+              //audio.play();
+            } else {
+              audio.src = current_audio_src;
+              //$cachePlayer.attr('src', cache_audio_src);
+              audio.play();
+            }
+          }
+        }
       }
     });
   });
@@ -162,11 +180,50 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
 
         var $element = $('<div class="hard content image"></div>');
         UI.renderWithData(Template.PalbumPageImage, current_data, $element[0]);
-
-        //initializePlayerControls($element);
       }
     }
 
     return $element;
+  }
+
+  function initializePlayerControls($element) {
+    var $controls = $element.find('.player-controls');
+
+    // 根據 localStorage 設置初始值
+    if (!localStorage.playMode) {
+      localStorage.playMode = 'normal';
+    }
+    $controls.find('.mode .icon').addClass(localStorage.playMode);
+
+    // 初始化音量及 slider
+    var $slider = $controls.find('input#slider');
+    if (!localStorage.volume) {
+      localStorage.volume = 0.6;
+    }
+    audio.volume = localStorage.volume;
+
+    return;
+  }
+
+  function initSlider($slider) {
+    $slider.slider({
+      min: 0,
+      max: 1,
+      step: 0.1,
+      value: parseFloat(localStorage.volume),
+      tooltip: 'hide'
+    })
+      .on('slide', function() {
+        localStorage.volume = $slider.slider('getValue');
+        audio.volume = localStorage.volume;
+      })
+      .on('slideStop', function() {
+        localStorage.volume = $slider.slider('getValue');
+        audio.volume = localStorage.volume;
+
+        $('.palbum-wrapper .page-wrapper .player-controls input#slider').each(function() {
+          $(this).slider('setValue', parseFloat(localStorage.volume));
+        });
+      });
   }
 });

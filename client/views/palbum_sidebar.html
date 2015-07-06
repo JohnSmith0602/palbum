@@ -37,7 +37,7 @@
           {{#each options}}
             <div class="field">
               <div class="ui radio checkbox">
-                {{#if $eq value ../currentValue }}
+                {{#if $eq value ../currentValue}}
                   <input type="radio" name="{{../name}}" value="{{value}}" checked>
                 {{else}}
                   <input type="radio" name="{{../name}}" value="{{value}}">

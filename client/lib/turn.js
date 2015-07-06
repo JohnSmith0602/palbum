@@ -11,6 +11,9 @@
 
 'use strict';
 
+// 自定義設置
+var cornerSize = 60;
+
 var has3d,
   
   hasRot,
@@ -98,7 +101,7 @@ var has3d,
 
     // Size of the active zone of each corner
 
-    cornerSize: 100
+    cornerSize: cornerSize
 
   },
 

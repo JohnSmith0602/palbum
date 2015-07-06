@@ -1,0 +1,82 @@
+audio
+  display: none
+
+.palbum-wrapper .player-controls
+  position: relative
+
+  .main
+    position: absolute
+    left: 50px
+    top: -110px
+    // TODO：之後所有 icons 會做成一種字體
+    .icon
+      display: inline-block
+      color: $baseWhite
+      font-size: 80px
+      &:hover
+        cursor: pointer
+        color: $baseGreen
+      &.play:before
+        content: "\ea15"
+      &.pause:before
+        content: "\ea16"
+
+  .mode
+    position: absolute
+    right: 64px
+    top: -75px
+    .icon
+      display: inline-block
+      color: $baseWhite
+      font-size: 24px
+      &:hover
+        cursor: pointer
+
+      &.normal:before
+        content: "\ea2e"
+      &.repeat
+        color: $baseGreen
+        &:before
+          content: "\ea2e"
+
+  .volume
+    position: relative
+    margin: 0
+    .icon
+      position: absolute
+      font-size: 30px
+      line-height: 40px
+      height: 40px
+
+      &.min
+        left: 0
+        color: $baseWhite
+        &:before
+          content: "\ea29"
+      &.max
+        right: 0
+        color: $baseGreen
+        &:before
+          content: "\ea26"
+
+    input#slider
+      display: none
+    .slider
+      margin: 0 45px 0 35px
+      width: 330px
+      height: 40px
+
+      .hide
+        display: none
+
+      .slider-handle
+        margin-left: -8px
+        margin-top: -3px
+        width: 16px
+        height: 16px
+
+        background: $baseGreen
+        opacity: 1
+
+      .slider-selection
+        background-image: 'linear-gradient(to right, %s 0%, %s 100%)' % ($baseWhite $baseGreen)

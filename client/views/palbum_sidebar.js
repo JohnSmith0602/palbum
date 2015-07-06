@@ -49,7 +49,10 @@ define('palbum_sidebar', ['data', 'utils'], function(data, utils) {
   });
 
   Template.PalbumSidebarList.onRendered(function() {
-    var $ul = $('body.palbum .sidebar ul');
+    // TODO：在什麼時機給 body 加樣式，甚至是否通過這種方式復用結構，之後需要考量。
+    // 因為 palbum 類是在 router action 裡加上的，意味著存在執行到此 body.palbum 尚不存在的可能性
+    // var $ul = $('body.palbum .sidebar ul');
+    var $ul = $('body .sidebar ul');
     var height = $ul.height();
     $ul.css('marginTop', -height / 2);
   });

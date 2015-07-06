@@ -1,5 +1,6 @@
 define('utils', ['data'], function(data) {
   var utils = {};
+
   utils.showModal = function(callbackFn) {
     var $modal = $('.main-content .modal');
     var $modalContent = $modal.find('.modal-content');
@@ -31,10 +32,33 @@ define('utils', ['data'], function(data) {
     return settings;
   };
 
+  utils.palbumInitialization = function() {
+    localStorage.mode = localStorage.mode || 'normal';
+    localStorage.volume = localStorage.volume || 0.6;
+  };
+
   utils.getPalbumPageNumber = function(songNumber) {
     var palbumPageNumber = songNumber * 2 + 1 + 2 + 1;
 
     return palbumPageNumber;
+  };
+
+  utils.getAudioSrcByPageNumber = function(pageNum, data) {
+    var src = '';
+    var index;
+    if (pageNum > 3) {
+      if (pageNum % 2) {
+        index = (pageNum - 3) / 2 - 1;
+      } else {
+        index = (pageNum - 4) / 2;
+      }
+
+      if (index <= data.songs.length - 1) {
+        src = '/audios/palbums/' + data.id + '/' + (index + 1) + '.mp3';
+      }
+    }
+
+    return src;
   };
 
   // 拼接歌曲頁「瞭解更多」鏈接的 url
@@ -61,9 +85,10 @@ define('utils', ['data'], function(data) {
         var options = section.options;
         _.each(options, function(option) {
           if (option.value === 'default') {
-            option.title = '';
+            dict[option.value] = '';
+          } else {
+            dict[option.value] = option.title;
           }
-          dict[option.value] = option.title;
         });
       }
     });
