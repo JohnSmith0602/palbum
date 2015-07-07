@@ -9,15 +9,15 @@ body.palbum .modal
 
   .icon.close
     position: absolute
+    text-align: center
     transition: all .2s ease-in-out
-    right: 0
+    right: $baseMargin
     top: 0
-    padding: 0 30px
-    line-height: $palbumLogoHeight
+    width: $palbumLogoHeight - 2 * $baseMargin
     height: $palbumLogoHeight
-    color: $baseGrayLight
+    line-height: $palbumLogoHeight
     font-size: 24px
-
+    color: $baseGrayLight
     &:before
       content: "\ea0f"
 

@@ -19,7 +19,7 @@
       <div class="wrapper">
         <h1 class="title">{{title}}</h1>
         <div class="text">
-          {{#each addIndex intros}}
+          {{#each addIndex summary}}
             {{#if isFirst}}
               <p class="first">{{value}}</p>
             {{else}}
@@ -90,7 +90,7 @@
       <span class="album-name">{{song.album.name}}</span>
     </div>
     <div class="main-body">
-      {{#each paragraphs}}
+      {{#each details}}
         <p>{{this}}</p>
       {{/each}}
 
