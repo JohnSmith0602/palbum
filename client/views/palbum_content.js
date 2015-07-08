@@ -1,57 +1,54 @@
 define('palbum_content', ['audio', 'utils'], function(audio, utils) {
   Template.PalbumContent.onRendered(function() {
-    function PlayerLoadingState(audioPlayer) {
-      this.audioPlayer = audioPlayer;
-    }
-    PlayerLoadingState.prototype.clickPlay = function() {
-      this.audioPlayer.audio.pause();
-      this.audioPlayer.$el.find(this.audioPlayer.playBtnSelector).removeClass('pause').addClass('play');
-      this.audioPlayer.setState(this.audioPlayer.pauseState);
-    };
+    var AudioPlayerStates = {
+      loading: {
+        clickPlay: function() {
+          this.audio.pause();
+          this.$el.find(this.playBtnSelector).removeClass('pause').addClass('play');
 
-    function PlayerPlayState(audioPlayer) {
-      this.audioPlayer = audioPlayer;
-    }
-    PlayerPlayState.prototype.clickPlay = function() {
-      this.audioPlayer.audio.pause();
-      this.audioPlayer.$el.find(this.audioPlayer.playBtnSelector).removeClass('pause').addClass('play');
-      this.audioPlayer.setState(this.audioPlayer.pauseState);
-    };
+          this.currentState = AudioPlayerStates.pause;
+        }
+      },
+      play: {
+        clickPlay: function() {
+          this.audio.pause();
+          this.$el.find(this.playBtnSelector).removeClass('pause').addClass('play');
 
-    function PlayerPauseState(audioPlayer) {
-      this.audioPlayer = audioPlayer;
-    }
-    PlayerPauseState.prototype.clickPlay = function() {
-      this.audioPlayer.audio.play();
-      this.audioPlayer.$el.find(this.audioPlayer.playBtnSelector).removeClass('play').addClass('pause');
-      if (this.audioPlayer.audio.readyState === 4) {
-        this.audioPlayer.setState(this.audioPlayer.playState);
-      } else {
-        this.audioPlayer.setState(this.audioPlayer.loadingState);
+          this.currentState = AudioPlayerStates.pause;
+        }
+      },
+      pause: {
+        clickPlay: function() {
+          this.audio.play();
+          this.$el.find(this.playBtnSelector).removeClass('play').addClass('pause');
+          if (this.audio.readyState === 4) {
+            this.currentState = AudioPlayerStates.play;
+          } else {
+            this.currentState = AudioPlayerStates.loading;
+          }
+        }
       }
     };
 
     var AudioPlayer = function() {
+      this.currentState = AudioPlayerStates.loading;
+      this.audio = null;
+      this.$el = null;
+      this.playBtnSelector = null;
+    };
+    AudioPlayer.prototype.init = function() {
       this.audio = audio;
       this.$el = $('.palbum-wrapper');
       this.playBtnSelector = '.player-controls .main span.icon';
 
-      this.loadingState = new PlayerLoadingState(this);
-      this.playState = new PlayerPlayState(this);
-      this.pauseState = new PlayerPauseState(this);
-
-      this.currentState = this.loadingState;
-
       var self = this;
       this.$el.on('click', this.playBtnSelector, function (e) {
-        self.currentState.clickPlay();
+        self.currentState.clickPlay.call(self);
       });
-    };
-    AudioPlayer.prototype.setState = function(newState) {
-      this.currentState = newState;
     };
 
     var audioPlayer = new AudioPlayer();
+    audioPlayer.init();
 
 
     // pAlbum 設置初始化
