@@ -85,27 +85,48 @@ $lightGray = #cacaca
       a.search-more
         display: inline-block
         margin: 30px 0 20px 0
+        color: $baseWhite
         font-size: 16px
         font-family: $baseFontFamily
-        color: $lightGray
         text-decoration: none
+        opacity: 0.7
 
         &:hover
           color: $baseGreen
           text-decoration: underline
+          opacity: 1
 
     .footer
       position: absolute
-      right: 0px
-      bottom: 0px
+      left: 0
+      bottom: 0
+      width: 100%
+      height: $baseMargin + 15
+      line-height: $baseMargin + 15
+
+      .menu
+        display: inline-block
+        padding: 0 10px
+        margin-left: $baseMargin - 10
+        opacity: 0.7
+
+        &:hover
+          cursor: pointer
+          color: $baseGreen
+          opacity: 1
+
+        .icon
+          font-size: 0.8em
+          &:before
+            content: '\e9ba'
 
       .page-number
-        display: inline-block
+        position: absolute
+        right: 0
         width: $baseMargin
-        height: $baseMargin + 15px
-        line-height: $baseMargin + 15px
+        text-align: left
+        opacity: 0.7
 
         font-size: 20px
         font-family: cursive
         font-style: italic
-        opacity: 0.8

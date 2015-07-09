@@ -76,6 +76,11 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
       }
     });
 
+    // 查看目錄
+    $palbum.on('click', '.footer .menu', function(e) {
+      alert('Check Menu!');
+    });
+
 
     /*
      ** turnjs 相關
