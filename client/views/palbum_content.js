@@ -59,6 +59,8 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
     $('body').append(audio);
 
     var data = this.data;
+    var $windowModal = $('.window-modal');
+    var $menuModal = $('.main-content .menu-modal');
     var $palbum = $('.palbum-wrapper');
     var palbumPageNumber = utils.getPalbumPageNumber(data.songs.length);
 
@@ -78,7 +80,12 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
 
     // 查看目錄
     $palbum.on('click', '.footer .menu', function(e) {
-      alert('Check Menu!');
+      $windowModal.show();
+      $menuModal.show();
+    });
+    $windowModal.on('click', function(e) {
+      $windowModal.hide();
+      $menuModal.hide();
     });
 
 

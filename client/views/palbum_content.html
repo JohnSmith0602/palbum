@@ -56,6 +56,37 @@
       </div>
     </div>
   </div>
+
+  {{> PalbumMenu}}
+</template>
+
+<template name="PalbumMenu">
+  <div class="menu-modal theme-{{color}}">
+    <div class="page even left">
+      {{{palbumCoverDiv id}}}
+    </div>
+    <div class="page odd right">
+      <h2 class="title">乐辑目录</h2>
+      {{#if sectionIndex.length}}
+        {{#each sectionIndex}}
+          <div class="section">
+            <h4 class="title">{{title}}</h4>
+            <ul>
+              {{#each songs}}
+                <li class="song">{{name}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/each}}
+      {{else}}
+        <ul>
+          {{#each songs}}
+            <li class="song">{{song.name}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
+  </div>
 </template>
 
 <template name="PalbumPageImage">

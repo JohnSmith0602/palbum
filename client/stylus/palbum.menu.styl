@@ -1,0 +1,28 @@
+.main-content .menu-modal
+  display: none
+  position: absolute
+  z-index: 1000
+  left: 50%
+  top: 50%
+  margin-left: ($palbumSidebarWidth / 2) - $baseMargin - $pageWidth
+  margin-top: - $baseMargin - ($pageHeight / 2)
+  width: $pageWidth * 2 + $baseMargin * 2
+  height: $pageHeight + $baseMargin * 2
+
+  &.theme-blue
+    background-color: $themeBlue
+
+
+  .page
+    float: left
+    width: 50%
+    height: 100%
+
+    &.left .cover
+      margin: $baseMargin
+      width: $pageWidth + $baseMargin - $baseMargin * 2
+      height: $pageHeight
+      background-repeat: no-repeat
+      background-position: center 0
+      background-size: auto 100%
+      border-radius: 30px

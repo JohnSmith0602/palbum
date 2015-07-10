@@ -19,8 +19,6 @@ Template.registerHelper('getBackCoverIndex', function(songsCount) {
   return backCoverIndex;
 });
 
-
-//
 Template.registerHelper('getPalbumCoverSrc', function(palbumId) {
   var palbumCoverSrc = '/images/palbums/' + palbumId + '/cover.jpg';
 
