@@ -1,0 +1,169 @@
+.palbum-wrapper
+  // 首頁封面
+  .page.p1
+    .wrapper
+      position: relative
+      margin: 0
+      height: 100%
+
+    .cover
+      width: 100%
+      height: $pageHeight - (50 + 20 + 30 + 10 + 70)
+      background-repeat: no-repeat
+      background-position: center 0
+      background-size: auto 100%
+
+    .waist
+      margin: 30px 0 70px 0
+
+      .title
+        text-align: center
+        margin: 0 0 10px 0
+        font-size: 24px
+        line-height: 50px
+        height: 50px
+
+      span.author
+        margin-left: 50%
+        font-size: 14px
+        line-height: 20px
+        font-style: italic
+        height: 20px
+
+        a
+          margin-left: 6px
+          text-decoration: none
+          color: $baseWhite
+
+          &:hover
+            text-decoration: underline
+            color: $baseGreen
+
+
+  // 側頁封面
+  .p2 .cover
+    margin: $baseMargin
+    width: $pageWidth - $baseMargin * 2
+    height: $pageHeight - $baseMargin * 2
+    background-repeat: no-repeat
+    background-position: center 0
+    background-size: auto 100%
+    border-radius: 30px
+
+
+
+
+  // 介紹頁
+  .page.intro .wrapper
+    overflow: hidden
+    margin: $baseMargin
+    width: $pageWidth - $baseMargin * 2
+    height: $pageHeight - $baseMargin * 2
+    font-family: 'Helvetica Neue','STKaiti','KaiTi','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif
+
+    .title
+      text-align: center
+      margin: 6px
+      font-size: 24px
+      line-height: 50px
+      height: 50px
+
+    .text
+      overflow: auto
+      margin-bottom: 15px
+      height: $pageHeight - $baseMargin * 2 - 50px - 6px * 2 - 15px
+
+      p
+        margin: 20px 0
+        font-size: 17px
+        line-height: 1.4em
+        font-family: 'Helvetica Neue','STKaiti','KaiTi','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+
+
+        &.first
+          margin-top: 0
+
+          &:before
+            content: ''
+            display: inline-block
+            margin-right: 6px
+            width: 24px
+            height: 24px
+            background: url("/icons/startquotes.svg")
+            background-size: 100%
+
+        &.last
+          margin-bottom: 30px
+
+      /*&:after*/
+      /*content: ''*/
+      /*display: inline-block*/
+      /*margin-left: 6px*/
+      /*width: 24px*/
+      /*height: 24px*/
+      /*background: url("/icons/endquotes.svg")*/
+      /*background-size: 100%*/
+
+      .author
+        display: block
+        text-align: right
+        margin: 0 15px 10px 0
+      .date
+        display: block
+        text-align: right
+        margin: 0 15px 15px 0
+
+
+  // 尾頁
+  .page .back-cover
+    position: relative
+    padding: 60px 80px 100px 80px
+    width: 100%
+    height: 100%
+
+    ol.index
+      overflow: auto
+      margin: 0
+      height: 100%
+      li
+        margin-bottom: 5px
+
+      a
+        text-decoration: none
+        color: $baseWhite
+
+        &:hover
+          text-decoration: underline
+          color: $baseGreen
+
+    .controls
+      position: absolute
+      left: 100px
+      bottom: 30px
+
+      a
+        display: inline-block
+        margin-right: 30px
+        font-size: 16px
+        line-height: 30px
+        text-decoration: none
+        color: $baseWhite
+        &:hover
+          color: $baseGreen
+
+        span
+          margin-left: 34px
+
+        &.replay
+          background: url('/icons/replay.png') 0 0 no-repeat
+          background-size: auto 100%
+          &:hover
+            background: url('/icons/replay_hover.png') 0 0 no-repeat
+            background-size: auto 100%
+
+        &.exit
+          background: url('/icons/exit.svg') 0 0 no-repeat
+          background-size: auto 100%
+          &:hover
+            background: url('/icons/exit_hover.svg') 0 0 no-repeat
+            background-size: auto 100%

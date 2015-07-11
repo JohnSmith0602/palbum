@@ -78,15 +78,20 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
       }
     });
 
-    // 查看目錄
+    // 查看、關閉目錄
     $palbum.on('click', '.footer .menu', function(e) {
       $windowModal.show();
       $menuModal.show();
     });
-    $windowModal.on('click', function(e) {
+    $menuModal.find('.icon.close').on('click', closeMenuModal);
+    $windowModal.on('click', closeMenuModal);
+
+    function closeMenuModal(e) {
+      e.preventDefault();
+
       $windowModal.hide();
       $menuModal.hide();
-    });
+    }
 
 
     /*
@@ -154,6 +159,59 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
         }
       }
     });
+
+    /*
+     ** 定義快捷鍵
+     */
+    var shortcuts = {
+      37: KeyLeftCallback,
+      39: KeyRightCallback,
+      38: KeyUpCallback,
+      40: KeyDownCallback,
+      77: KeyMCallback,
+      83: KeySCallback
+    };
+
+    $(document).on('keydown', function(e) {
+      var keyCode = e.keyCode ? e.keyCode : e.which;
+
+      if (!$(e.target).parents('.modal-content').length && shortcuts[keyCode]) {
+        // Modal 時快捷鍵無效，因為可能存在用戶的輸入
+        // TODO：目前採用排除法，之後可能會改成只有 e.target 是 body.palbum 時才允許用快捷鍵。
+        shortcuts[keyCode]();
+      }
+    });
+    function KeyLeftCallback() {
+      // 翻到上一頁
+      var newPage;
+      var currentPage = $palbum.turn('page');
+      if (currentPage > 1) {
+        if (currentPage % 2) {
+          newPage = currentPage - 2;
+        } else {
+          newPage = currentPage - 1;
+        }
+      }
+      $palbum.turn('page', newPage);
+    }
+    function KeyRightCallback() {
+      // 翻到下一頁
+      var newPage;
+      var currentPage = $palbum.turn('page');
+      if (currentPage < palbumPageNumber) {
+        if (currentPage % 2) {
+          newPage = currentPage + 1;
+        } else {
+          newPage = currentPage + 2;
+        }
+      }
+      $palbum.turn('page', newPage);
+    }
+    function KeyUpCallback() {}
+    function KeyDownCallback() {}
+    function KeyMCallback() {}
+    function KeySCallback() {}
+
   });
 
   function addPage(page, $palbum, data) {
@@ -173,7 +231,9 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
 
         // js 動態設置頁面的文字尺寸
         if (current_data.fontSize) {
-          $element.find('.main-body p').css('fontSize', current_data.fontSize + 'em');
+          $element.find('.main-body p')
+            .css('fontSize', current_data.fontSize + 'em')
+            .css('lineHeight', '1.3em');
         }
 
         // 設置搜索鏈接的 href
@@ -253,4 +313,7 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
         });
       });
   }
+
+
+
 });

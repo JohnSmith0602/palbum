@@ -219,24 +219,6 @@ if (Palbums.find().count() === 0) {
         pageNumberInBook: 60,
         fontSize: 1.1,
         searchType: 'album'
-      },
-      {
-        song: {
-          name: 'Just Like a Woman',
-          artist: {
-            name: 'Bob Dylan'
-          },
-          album: {
-            name: 'Blonde on Blonde',
-            link: 'http://www.xiami.com/album/52281'
-          }
-        },
-        details: [
-          '加入 John Mayall & the Bluesbreakers 还不到一个月，John Mayall 就要我去录音棚伴奏几首歌，这是几首将和 Bob Dylan 合作的歌曲。',
-          '实话实说，之前我没听过迪伦的歌。事实上，我还没听过他一首歌就对他产生了巨大的偏见，我想，主要还是因为我看不惯那些狂热的迪伦歌迷。对我而言，迪伦不过是个民谣歌手。 ... 我就像迪伦的 <Ballad of a Thin Man>（这首歌描写了一个正统守旧的男人 Mr Jones。他走进了一个房间，对房间里发生着的反文化现象百思不得其解）中的“琼斯先生”。',
-          '这就是我和迪伦终生友谊的开端。 ... 后来的一段时间，我没太把迪伦放在心上，直到听到 <Blonde on Blonde>，谢天谢地，我终于听懂了他。'
-        ],
-        pageNumberInBook: 73
       }
     ]
   });

@@ -12,6 +12,23 @@
   &.theme-blue
     background-color: $themeBlue
 
+  .icon.close
+    position: absolute
+    transition: all .2s ease-in-out
+    right: 8px
+    top: 0
+    height: $baseMargin
+    line-height: $baseMargin
+    font-size: 16px
+    color: $baseWhite
+    opacity: 0.2
+    &:before
+      content: "\ea0f"
+
+    &:hover
+      cursor: pointer
+      transform: scale(1.2)
+      opacity: 1
 
   .page
     float: left
@@ -43,9 +60,10 @@
       .sections
         overflow: auto
         height: $pageHeight - (40 + 20)
+        margin: 0 0 0 $baseMargin
 
       .section
-        margin: 0 0 10px $baseMargin
+        margin: 0 0 10px 0
 
         .title
           margin: 0
@@ -59,6 +77,19 @@
 
           li
             line-height: 1.4em
+            &.current
+              list-style-type: disc
+              color: $baseGreen
+
+      ul.non-section
+        overflow: auto
+        height: $pageHeight - (40 + 20)
+        margin: 0
+        padding: 0 0 20px 60px
+        list-style-type: circle
+
+          li
+            line-height: 1.8em
             &.current
               list-style-type: disc
               color: $baseGreen

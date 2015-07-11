@@ -46,7 +46,7 @@ define('utils', ['data'], function(data) {
   utils.getAudioSrcByPageNumber = function(pageNum, data) {
     var src = '';
     var index = utils.getSongIndexByPageNumber(pageNum);
-    if (index && (index <= data.songs.length - 1)) {
+    if ((index !== null) && (index <= data.songs.length - 1)) {
       src = '/audios/palbums/' + data.id + '/' + (index + 1) + '.mp3';
     }
 
