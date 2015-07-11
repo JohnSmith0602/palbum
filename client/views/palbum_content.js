@@ -148,6 +148,9 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
               audio.play();
             }
           }
+
+          // 更新樂輯目錄
+          updateMenu(page, data.sectionIndex);
         }
       }
     });
@@ -193,6 +196,21 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
     }
 
     return $element;
+  }
+
+  function updateMenu(currentPage, indexData) {
+    var $menuModal = $('.main-content .menu-modal');
+    if (indexData.length) {
+      var currentPos = utils.getCurrentPosByPageNum(currentPage, indexData);
+      var $currentSection = $menuModal.find('.section').eq(currentPos.sectionIndex);
+      var $currentSong = $currentSection.find('li').eq(currentPos.songIndex);
+    } else {
+      var currentIndex = utils.getSongIndexByPageNumber(currentPage);
+      var $currentSong = $menuModal.find('.non-section li').eq(currentIndex);
+    }
+
+    $menuModal.find('li').removeClass('current');
+    $currentSong.addClass('current');
   }
 
   function initializePlayerControls($element) {

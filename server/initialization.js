@@ -40,13 +40,13 @@ if (Palbums.find().count() === 0) {
         songCount: 4,
         songs: [
           {
+            name: 'Hey Hey'
+          },
+          {
             name: 'Kindhearted Woman'
           },
           {
             name: 'I Love the Woman'
-          },
-          {
-            name: 'I\'ll Walk Beside You'
           },
           {
             name: 'I\'m a Man'

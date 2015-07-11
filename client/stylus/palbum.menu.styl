@@ -26,3 +26,39 @@
       background-position: center 0
       background-size: auto 100%
       border-radius: 30px
+
+    &.right .wrapper
+      overflow: hidden
+      margin: $baseMargin
+      width: $pageWidth + $baseMargin - $baseMargin * 2
+      height: $pageHeight
+
+      h2
+        margin: 0 0 20px 0
+        font-size: 22px
+        line-height: 40px
+        height: 40px
+        text-align: center
+
+      .sections
+        overflow: auto
+        height: $pageHeight - (40 + 20)
+
+      .section
+        margin: 0 0 10px $baseMargin
+
+        .title
+          margin: 0
+          font-size: 18px
+          line-height: 36px
+          height: 36px
+
+        ul
+          list-style-type: circle
+          margin: 0
+
+          li
+            line-height: 1.4em
+            &.current
+              list-style-type: disc
+              color: $baseGreen

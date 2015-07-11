@@ -45,20 +45,58 @@ define('utils', ['data'], function(data) {
 
   utils.getAudioSrcByPageNumber = function(pageNum, data) {
     var src = '';
-    var index;
+    var index = utils.getSongIndexByPageNumber(pageNum);
+    if (index && (index <= data.songs.length - 1)) {
+      src = '/audios/palbums/' + data.id + '/' + (index + 1) + '.mp3';
+    }
+
+    return src;
+  };
+
+  utils.getCurrentPosByPageNum = function(pageNum, indexData) {
+    var currentIndex = utils.getSongIndexByPageNumber(pageNum);
+    var currentPos = utils.getPosByIndex(currentIndex, indexData);
+
+    return currentPos;
+  };
+
+  utils.getPosByIndex = function(index, indexData) {
+    var sectionIndex = 0;
+    var songIndex = 0;
+    index += 1;   // 因為 index 是從 0 開始計數的
+
+    for (var i = 0, l = indexData.length; i < l; i++) {
+      var songCount = indexData[i]['songCount'];
+      if (index <= songCount) {
+        sectionIndex = i;
+        songIndex = index - 1;
+
+        return {
+          sectionIndex: sectionIndex,
+          songIndex: songIndex
+        }
+      } else {
+        index -= songCount;
+      }
+    }
+
+    return {
+      sectionIndex: 0,
+      songIndex: 0
+    }
+  };
+
+  utils.getSongIndexByPageNumber = function(pageNum) {
+    var index = null;
     if (pageNum > 3) {
       if (pageNum % 2) {
         index = (pageNum - 3) / 2 - 1;
       } else {
         index = (pageNum - 4) / 2;
       }
-
-      if (index <= data.songs.length - 1) {
-        src = '/audios/palbums/' + data.id + '/' + (index + 1) + '.mp3';
-      }
     }
 
-    return src;
+    return index;
   };
 
   // 拼接歌曲頁「瞭解更多」鏈接的 url
