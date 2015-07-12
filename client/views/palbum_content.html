@@ -71,11 +71,11 @@
         <h2 class="title">乐辑目录</h2>
         {{#if sectionIndex.length}}
           <div class="sections">
-            {{#each sectionIndex}}
+            {{#each addIndex sectionIndex}}
               <div class="section">
-                <h4 class="title">{{title}}</h4>
+                <h4 class="title" data-index="{{getSongIndexForSectionBySectionIndex index ../sectionIndex}}">{{value.title}}</h4>
                 <ul>
-                  {{#each songs}}
+                  {{#each value.songs}}
                     <li class="song">{{name}}</li>
                   {{/each}}
                 </ul>

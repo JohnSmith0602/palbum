@@ -99,6 +99,22 @@ define('utils', ['data'], function(data) {
     return index;
   };
 
+  utils.getSongIndexBySectionIndex = function(sectionIndex, sectionData) {
+    var songIndex = 0;
+    for (var i = 0; i < sectionIndex; i++) {
+      songIndex += sectionData[i].songCount;
+    }
+
+    return songIndex;
+  };
+  utils.getPageNumBySongIndex = function(songIndex) {
+    var pageNum = 0;
+
+    pageNum = 1 + 2 + 1 + songIndex * 2;
+
+    return pageNum;
+  };
+
   // 拼接歌曲頁「瞭解更多」鏈接的 url
   utils.getSearchMoreHref = function(searchType, searchPreference, artistName, albumName, songName) {
     searchPreference = searchPreference || 'default';

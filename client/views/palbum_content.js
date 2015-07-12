@@ -207,11 +207,54 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
       }
       $palbum.turn('page', newPage);
     }
-    function KeyUpCallback() {}
-    function KeyDownCallback() {}
-    function KeyMCallback() {}
-    function KeySCallback() {}
+    function KeyUpCallback() {
+      // 翻到上一章
+      if (data.sectionIndex.length) {
+        var sectionData = data.sectionIndex;
+        var currentPage = $palbum.turn('page');
+        var currentPos = utils.getCurrentPosByPageNum(currentPage, sectionData);
+        if (currentPos.sectionIndex > 0) {
+          var newSectionIndex = currentPos.sectionIndex - 1;
+          var newSongIndex = utils.getSongIndexBySectionIndex(newSectionIndex, sectionData);
+          var newPageNum = utils.getPageNumBySongIndex(newSongIndex);
+          $palbum.turn('page', newPageNum);
+        }
+      } else {
+        // 沒有 section，翻到上一頁
+        KeyLeftCallback();
+      }
+    }
+    function KeyDownCallback() {
+      // 翻到下一章
+      if (data.sectionIndex.length) {
+        var sectionData = data.sectionIndex;
+        var currentPage = $palbum.turn('page');
+        var currentPos = utils.getCurrentPosByPageNum(currentPage, sectionData);
+        if (currentPos.sectionIndex < data.sectionIndex.length - 1) {
+          var newSectionIndex = currentPos.sectionIndex + 1;
+          var newSongIndex = utils.getSongIndexBySectionIndex(newSectionIndex, sectionData);
+          var newPageNum = utils.getPageNumBySongIndex(newSongIndex);
+          $palbum.turn('page', newPageNum);
+        }
+      } else {
+        // 沒有 section，翻到下一頁
+        KeyRightCallback();
+      }
+    }
 
+    function KeyMCallback() {
+      // 展開/收起目錄
+      if (($windowModal.css('display') === 'none') && ($menuModal.css('display') === 'none')) {
+        $windowModal.show();
+        $menuModal.show();
+      } else if (($windowModal.css('display') === 'block') && ($menuModal.css('display') === 'block')) {
+        $windowModal.hide();
+        $menuModal.hide();
+      }
+    }
+
+
+    function KeySCallback() {}
   });
 
   function addPage(page, $palbum, data) {
@@ -315,5 +358,28 @@ define('palbum_content', ['audio', 'utils'], function(audio, utils) {
   }
 
 
+  Template.PalbumMenu.helpers({
+    getSongIndexForSectionBySectionIndex: function(index, data) {
+      var href = '';
+      var songIndex = utils.getSongIndexBySectionIndex(index, data);
 
+      return songIndex;
+    }
+  });
+  Template.PalbumMenu.onRendered(function() {
+    var $palbum = $('.palbum-wrapper');
+    var $windowModal = $('.window-modal');
+    var $menuModal = $('.main-content .menu-modal');
+
+    $menuModal.on('click', '.section .title', function(e) {
+      e.preventDefault();
+      var songIndex = $(e.currentTarget).data('index');
+      var pageNum = utils.getPageNumBySongIndex(songIndex);
+
+      $windowModal.hide();
+      $menuModal.hide();
+
+      $palbum.turn('page', pageNum);
+    });
+  });
 });
