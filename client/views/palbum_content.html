@@ -21,10 +21,10 @@
         <div class="text">
           {{#each addIndex summary}}
             {{#if isFirst}}
-              <p class="first">{{value}}</p>
+              <p class="first"><span class="icon left-quote"></span>{{value}}</p>
             {{else}}
               {{#if isLast}}
-                <p class="last">{{value}}</p>
+                <p class="last">{{value}}<span class="icon right-quote"></span></p>
               {{else}}
                 <p>{{value}}</p>
               {{/if}}
@@ -76,7 +76,10 @@
                 <h4 class="title" data-index="{{getSongIndexForSectionBySectionIndex index ../sectionIndex}}">{{value.title}}</h4>
                 <ul>
                   {{#each value.songs}}
-                    <li class="song">{{name}}</li>
+                    <li>
+                      <span class="song">{{name}}</span>
+                      <span class="artist">{{artistName}}</span>
+                    </li>
                   {{/each}}
                 </ul>
               </div>

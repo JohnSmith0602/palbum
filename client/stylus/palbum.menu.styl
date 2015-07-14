@@ -42,7 +42,7 @@
       background-repeat: no-repeat
       background-position: center 0
       background-size: auto 100%
-      border-radius: 30px
+      border-radius: 15px
 
     &.right .wrapper
       overflow: hidden
@@ -60,7 +60,7 @@
       .sections
         overflow: auto
         height: $pageHeight - (40 + 20)
-        margin: 0 0 0 $baseMargin
+        margin: 0 0 0 10px
 
       .section
         margin: 0 0 10px 0
@@ -85,6 +85,11 @@
             &.current
               list-style-type: disc
               color: $baseGreen
+
+            .artist
+              float: right
+              font-size: $baseFontSize - 2
+              font-style: italic
 
       ul.non-section
         overflow: auto

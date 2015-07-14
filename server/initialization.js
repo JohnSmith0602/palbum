@@ -8,30 +8,36 @@ if (Palbums.find().count() === 0) {
     color: 'blue',
     // TODO：之後內容肯定是通過 textarea 輸入，即是說 summary 會是單個字符串，各段間有特殊的劃分符，可以在 template 層做處理。
     summary: [
-      '张国荣对我来说，是怎样的一种存在呢？每年今天，我都会集中思考这个问题。去年的四月一日，我在朋友圈写过这样一段话。',
-      '「早已过了偶像的界限，像是隔世的知己，或者远方的神佛。也许是个性或者价值观的某种认同，也许阴阳两隔让我忽略了你是巨星我是凡众的差异。最初的热爱在时光的幻化里，沉淀成一种情怀。在无限的想象中，赋予你太多意味。这样的交融，是我最好的独家记忆。」',
-      '这就是张国荣之于我的意义，如果说喜欢黄家驹是我少年时理想主义的寄托，那么钟爱张国荣，就是我从男孩成长为男人始终没有幻灭的一场美梦。他弥漫在我的生命里，如影随形。',
-      '数不清的日子里，看他的电影，听他的歌，做自己的事。感悟许多人事的意味，许多歌里融入了我的记忆与感觉，不可名状，仅挑出十首，与君分享。'
+      'Eric Clapton，來自英國的「吉他上帝」、「吉他之神」，滾石雜誌評出的史上百大吉他手第四位，獲得過 19 座格萊美獎，唯一一位三度入主搖滾名人堂的音樂人。',
+      '這張樂輯的內容全部取自中文版的 Eric Clapton 自傳《天堂十字路口》，凡是書中做了一定描述的歌曲和專輯，樂輯都有記錄。我在編輯的過程中隨著 Eric Clapton 這位布魯斯愛好者聆聽了不同時代的布魯斯大師的經典作品，獲得了極大的聽覺享受。希望你也會中意，甚至獲益。',
+      '除了音樂本身，Eric Clapton 對音樂的看法同樣觸動了我：「音樂總會找到它的途徑來到我們身旁，...音樂比這一切都來得更長久，它無需別人的恩惠，更沒有什麼可以阻擋，它就像上帝一樣，永遠在場。」',
+      '借第一個條目的寶地，偏心多講兩句：Juy 心比天高，想為互聯網音樂服務帶來質變，Juy.fm 只是邁出的第一步。如果你在這裡看到了對音樂的熱愛和信仰，希望你可以陪伴 Juy 一路前行。'
     ],
+    date: '2015-07-13',
     sectionIndex: [
       {
         title: '长大的日子里',
         songCount: 5,
         songs: [
           {
-            name: 'I\'ll Walk Beside You'
+            name: 'I\'ll Walk Beside You',
+            artistName: 'Josef Locke'
           },
           {
-            name: 'Memphis Tennessee'
+            name: 'Memphis Tennessee',
+            artistName: 'Chuck Berry'
           },
           {
-            name: 'You Keep On Dogging Me'
+            name: 'You Keep On Dogging Me',
+            artistName: 'Sonny Terry'
           },
           {
-            name: 'Hound Dog'
+            name: 'Hound Dog',
+            artistName: 'Elvis Presley'
           },
           {
-            name: 'That\'ll Be The Day'
+            name: 'That\'ll Be The Day',
+            artistName: 'Buddy Holly & the Crickets'
           }
         ]
       },
@@ -40,16 +46,20 @@ if (Palbums.find().count() === 0) {
         songCount: 4,
         songs: [
           {
-            name: 'Hey Hey'
+            name: 'Hey Hey',
+            artistName: 'Big Bill Broonzy'
           },
           {
-            name: 'Kindhearted Woman'
+            name: 'Kindhearted Woman',
+            artistName: 'Robert Johnson'
           },
           {
-            name: 'I Love the Woman'
+            name: 'I Love the Woman',
+            artistName: 'Freddie King'
           },
           {
-            name: 'I\'m a Man'
+            name: 'I\'m a Man',
+            artistName: 'The Yardbirds'
           }
         ]
       }
